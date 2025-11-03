@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Water for Every Child | UNICEF</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        header {
+            background: #1CABE2;
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+
+        nav {
+            margin-top: 1rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-right: 2rem;
+            font-weight: 500;
+        }
+
+        .hero {
+            background: linear-gradient(rgba(28, 171, 226, 0.8), rgba(28, 171, 226, 0.8)), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 400"><rect fill="%231CABE2" width="1200" height="400"/></svg>');
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .calculator-section {
+            background: #f5f5f5;
+            padding: 3rem 0;
+        }
+
+        .calculator-box {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .calculator-box h2 {
+            color: #1CABE2;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .activity-group {
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            background: #f9f9f9;
+            border-radius: 5px;
+        }
+
+        .activity-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #555;
+        }
+
+        .activity-group input {
+            width: 100%;
+            padding: 0.5rem;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        .activity-group small {
+            display: block;
+            color: #777;
+            margin-top: 0.3rem;
+        }
+
+        .calculate-btn {
+            background: #1CABE2;
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            font-size: 1.1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 1rem;
+            font-weight: 600;
+        }
+
+        .calculate-btn:hover {
+            background: #1594c7;
+        }
+
+        .results {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background: #e8f7fc;
+            border-left: 4px solid #1CABE2;
+            border-radius: 5px;
+            display: none;
+        }
+
+        .results.show {
+            display: block;
+        }
+
+        .results h3 {
+            color: #1CABE2;
+            margin-bottom: 1rem;
+        }
+
+        .result-item {
+            margin: 0.5rem 0;
+            font-size: 1.1rem;
+        }
+
+        .result-item strong {
+            color: #333;
+        }
+
+        .info-section {
+            padding: 3rem 0;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .info-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .info-card h3 {
+            color: #1CABE2;
+            margin-bottom: 1rem;
+        }
+
+        footer {
+            background: #333;
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        .comparison {
+            margin-top: 1rem;
+            padding: 1rem;
+            background: #fff3cd;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">UNICEF</div>
+            <nav>
+                <a href="#home">Home</a>
+                <a href="#calculator">Calculator</a>
+                <a href="#impact">Our Impact</a>
+                <a href="#donate">Donate</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>Water for Every Child</h1>
+            <p>Clean water is a basic human right. Yet millions of children worldwide lack access to safe water. Calculate your daily water use and understand the impact.</p>
+        </div>
+    </section>
+
+    <section id="calculator" class="calculator-section">
+        <div class="container">
+            <div class="calculator-box">
+                <h2>Daily Water Use Calculator</h2>
+                <p style="text-align: center; margin-bottom: 2rem; color: #666;">Enter the number of times you do each activity per day</p>
+                
+                <div class="activity-group">
+                    <label>Showers/Baths</label>
+                    <input type="number" id="showers" min="0" value="1">
+                    <small>Average: 65 liters per shower (8 minutes)</small>
+                </div>
+
+                <div class="activity-group">
+                    <label>Toilet Flushes</label>
+                    <input type="number" id="toilet" min="0" value="5">
+                    <small>Average: 9 liters per flush</small>
+                </div>
+
+                <div class="activity-group">
+                    <label>Brushing Teeth</label>
+                    <input type="number" id="teeth" min="0" value="2">
+                    <small>Average: 6 liters (if tap runs continuously)</small>
+                </div>
+
+                <div class="activity-group">
+                    <label>Washing Dishes (by hand)</label>
+                    <input type="number" id="dishes" min="0" value="1">
+                    <small>Average: 40 liters per session</small>
+                </div>
+
+                <div class="activity-group">
+                    <label>Laundry Loads</label>
+                    <input type="number" id="laundry" min="0" value="0">
+                    <small>Average: 75 liters per load</small>
+                </div>
+
+                <div class="activity-group">
+                    <label>Drinking Water (glasses)</label>
+                    <input type="number" id="drinking" min="0" value="8">
+                    <small>Average: 0.25 liters per glass</small>
+                </div>
+
+                <div class="activity-group">
+                    <label>Cooking (times)</label>
+                    <input type="number" id="cooking" min="0" value="2">
+                    <small>Average: 10 liters per cooking session</small>
+                </div>
+
+                <button class="calculate-btn" onclick="calculateWater()">Calculate My Water Use</button>
+
+                <div id="results" class="results">
+                    <h3>Your Daily Water Footprint</h3>
+                    <div class="result-item">
+                        <strong>Total Daily Use:</strong> <span id="totalDaily"></span>
+                    </div>
+                    <div class="result-item">
+                        <strong>Monthly Use:</strong> <span id="totalMonthly"></span>
+                    </div>
+                    <div class="result-item">
+                        <strong>Yearly Use:</strong> <span id="totalYearly"></span>
+                    </div>
+                    <div class="comparison">
+                        <strong>Did you know?</strong> Many people in developing countries survive on less than 50 liters of water per day for ALL their needs. Your usage: <span id="comparison"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="info-section">
+        <div class="container">
+            <h2 style="text-align: center; color: #1CABE2; margin-bottom: 2rem;">The Global Water Crisis</h2>
+            <div class="info-grid">
+                <div class="info-card">
+                    <h3>2.2 Billion People</h3>
+                    <p>Lack access to safe drinking water worldwide. Children are the most vulnerable.</p>
+                </div>
+                <div class="info-card">
+                    <h3>1,000 Children Daily</h3>
+                    <p>Die from preventable water and sanitation-related diseases every day.</p>
+                </div>
+                <div class="info-card">
+                    <h3>Every Drop Counts</h3>
+                    <p>Small changes in water consumption can make a significant global impact.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 UNICEF - United Nations Children's Fund. All rights reserved.</p>
+            <p>Every child deserves access to clean water.</p>
+        </div>
+    </footer>
+
+    <script>
+        function calculateWater() {
+            const showers = parseInt(document.getElementById('showers').value) || 0;
+            const toilet = parseInt(document.getElementById('toilet').value) || 0;
+            const teeth = parseInt(document.getElementById('teeth').value) || 0;
+            const dishes = parseInt(document.getElementById('dishes').value) || 0;
+            const laundry = parseInt(document.getElementById('laundry').value) || 0;
+            const drinking = parseInt(document.getElementById('drinking').value) || 0;
+            const cooking = parseInt(document.getElementById('cooking').value) || 0;
+
+            const dailyTotal = (showers * 65) + (toilet * 9) + (teeth * 6) + 
+                             (dishes * 40) + (laundry * 75) + (drinking * 0.25) + 
+                             (cooking * 10);
+
+            const monthlyTotal = dailyTotal * 30;
+            const yearlyTotal = dailyTotal * 365;
+
+            document.getElementById('totalDaily').textContent = dailyTotal.toFixed(1) + ' liters';
+            document.getElementById('totalMonthly').textContent = monthlyTotal.toFixed(0) + ' liters';
+            document.getElementById('totalYearly').textContent = yearlyTotal.toFixed(0) + ' liters';
+            document.getElementById('comparison').textContent = dailyTotal.toFixed(1) + ' liters/day';
+
+            document.getElementById('results').classList.add('show');
+            document.getElementById('results').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+    </script>
+</body>
+</html>
